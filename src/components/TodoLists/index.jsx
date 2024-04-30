@@ -27,15 +27,18 @@ export const TodoLists = () => {
     <section className="py-6">
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id} className="flex items-center justify-between py-2">
+          <li
+            key={todo.id}
+            className="flex  justify-between py-2 md:flex-row flex-col gap-4"
+          >
             <div className="flex items-center gap-2">
               <input type="checkbox" checked={todo.completed} />
               <span className={todo.completed ? "line-through" : ""}>
                 {todo.title}
               </span>
             </div>
-            <div className=" gap-2 grid">
-              <div className="flex items-center gap-2">
+            <div className=" gap-2 grid grid-cols-2 md:grid-cols-1">
+              <div className="flex items-center gap-2 w-full">
                 <button className="text-blue-500">
                   <MdEdit fontSize={20} />
                 </button>
@@ -43,10 +46,10 @@ export const TodoLists = () => {
                   <MdDelete fontSize={20} />
                 </button>
               </div>
-              <span className="flex items-center gap-2">
+              <p className="flex items-center gap-1 justify-end">
                 <IoHelpCircleSharp />
                 {dayjs(todo.date).format("DD MMM, YYYY")}
-              </span>
+              </p>
             </div>
           </li>
         ))}
